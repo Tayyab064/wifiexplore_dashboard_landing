@@ -1,0 +1,47 @@
+<section class="scrollable padder"> 
+	<div class="m-b-md"> 
+		<h3 class="m-b-none">Users</h3> 
+	</div> 
+	<section class="panel panel-default"> 
+		<header class="panel-heading"> Users 
+			<i class="fa fa-info-sign text-muted" ></i> 
+		</header> 
+		<div class="table-responsive"> 
+			<table id='users' class="table table-striped m-b-none" data-ride="datatables"> 
+				<thead> 
+					<tr> 
+						<th width="20%">First Name</th> 
+						<th width="20%">Last Name</th> 
+						<th width="25%">Email</th> 
+						<th width="15%">Mobile Number</th> 
+						<th width="20%">Successfully Terminated</th>
+					</tr> 
+				</thead> 
+				<tbody> 
+					<% @user.each do |user| %>
+					<tr>
+						<td><%= user.first_name.present? ? user.first_name.capitalize : '' %></td>
+						<td><%= user.last_name.present? ? user.last_name.capitalize : '' %></td>
+						<td><%= user.email %></td>
+						<td><%= user.mobile_number %></td>
+						<td><%= user.terminated_successfully ? 'Yes' : 'No' %></td>
+					</tr>
+					<% end %>
+				</tbody> 
+			</table> 
+		</div> 
+	</section> 
+</section>
+
+<script>
+  $(function () {
+    $("#users").DataTable({
+      "paging": true,
+      "lengthChange": true,
+      "searching": false,
+      "ordering": true,
+      "info": true,
+      "autoWidth": true
+    });
+  });
+</script>

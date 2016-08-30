@@ -1,0 +1,52 @@
+<section class="scrollable padder"> 
+	<div class="m-b-md"> 
+		<h3 class="m-b-none">Connections</h3> 
+	</div> 
+	<section class="panel panel-default"> 
+		<header class="panel-heading"> Connections 
+			<i class="fa fa-info-sign text-muted" ></i> 
+		</header> 
+		<div class="table-responsive"> 
+			<table id='connections' class="table table-striped m-b-none" data-ride="datatables"> 
+				<thead> 
+					<tr> 
+						<th width="15%">Wifi</th> 
+						<th width="15%">User</th> 
+						<th width="15%">Connected At</th> 
+						<th width="15%">Disconnected At</th> 
+						<th width="15%%">Download Data</th>
+						<th width="15%">Upload Data</th>
+						<th width="10%">Bill</th>
+					</tr> 
+				</thead> 
+				<tbody> 
+					<% @connection.each do |connection| %>
+					<tr>
+						<td><%= connection.wifi.present? ? connection.wifi.name : 'Wifi Missing' %></td>
+						<td><%= connection.user.present? ? connection.user.first_name.capitalize+' '+connection.user.last_name.capitalize  : 'Name Missing' %></td>
+						<td><%= connection.connected_at.strftime('%I:%M%p %d-%m-%Y') %></td>
+						<td><%= connection.disconnected_at.present? ? connection.disconnected_at.strftime('%I:%M%p %d-%m-%Y') : ''  %></td>
+						<td><%= connection.download_data %></td>
+						<td><%= connection.upload_data %></td>
+						<td><%= connection.total_bill %></td>
+					</tr>
+					<% end %>
+				</tbody> 
+			</table> 
+		</div> 
+	</section> 
+</section>
+
+<script>
+  $(function () {
+    //$("#connections").DataTable();
+    $('#connections').DataTable({
+      "paging": true,
+      "lengthChange": true,
+      "searching": false,
+      "ordering": true,
+      "info": true,
+      "autoWidth": true
+    });
+  });
+</script>
