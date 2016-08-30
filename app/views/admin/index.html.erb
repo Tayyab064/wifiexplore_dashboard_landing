@@ -579,21 +579,23 @@
    var great16 = 0 ;
 
   	<% @wifis.each do |wifi| %>
-  		if(<%= wifi.avg_speed %> <= 2048){
-  			less2 = less2 + 1;
-  		}else
-  		if(<%= wifi.avg_speed %> <= 4096){
-  			less4 = less4 + 1;
-  		}else
-  		if(<%= wifi.avg_speed %> <= 8192){
-  			less8 = less8 + 1;
-  		}else
-  		if(<%= wifi.avg_speed %> <= 16384){
-  			less16 = less16 +1;
-  		}else
-  		if(<%= wifi.avg_speed %> > 16384){
-  			great16 = great16 + 1 ;
-  		}
+  		if(<%= wifi.avg_speed.present?){
+	  		if(<%= wifi.avg_speed %> <= 2048){
+	  			less2 = less2 + 1;
+	  		}else
+	  		if(<%= wifi.avg_speed %> <= 4096){
+	  			less4 = less4 + 1;
+	  		}else
+	  		if(<%= wifi.avg_speed %> <= 8192){
+	  			less8 = less8 + 1;
+	  		}else
+	  		if(<%= wifi.avg_speed %> <= 16384){
+	  			less16 = less16 +1;
+	  		}else
+	  		if(<%= wifi.avg_speed %> > 16384){
+	  			great16 = great16 + 1 ;
+	  		}
+	  	}
 	<% end %>
 
 	var da = [
