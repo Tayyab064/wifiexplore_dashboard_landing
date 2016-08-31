@@ -21,15 +21,209 @@
 				</thead> 
 				<tbody> 
 					<% @connection.each do |connection| %>
+						<% if connection.user.present? %>
+							<% use = connection.user.first_name.capitalize+' '+connection.user.last_name.capitalize %>
+						<% else %>
+							<% use = 'Name Missing' %>
+						<% end %>
+
+						<% if connection.wifi.present? %>
+							<% wif = connection.wifi.name %>
+						<% else %>
+							<% wif = 'Wifi Missing' %>
+						<% end %>
 					<tr>
-						<td><%= connection.wifi.present? ? connection.wifi.name : 'Wifi Missing' %></td>
-						<td><%= connection.user.present? ? connection.user.first_name.capitalize+' '+connection.user.last_name.capitalize  : 'Name Missing' %></td>
+						<td><%= link_to wif, "#wif_mod_#{connection.wifi_id}", "data-toggle" => "modal" %></td>
+						<td><%= link_to use, "#user_mod_#{connection.user_id}", "data-toggle" => "modal" %></td>
 						<td><%= connection.connected_at.strftime('%I:%M%p %d-%m-%Y') %></td>
 						<td><%= connection.disconnected_at.present? ? connection.disconnected_at.strftime('%I:%M%p %d-%m-%Y') : ''  %></td>
 						<td><%= connection.download_data %></td>
 						<td><%= connection.upload_data %></td>
 						<td><%= connection.total_bill %></td>
 					</tr>
+
+
+					<!-- Wifi Modal -->
+					  <div class="modal fade" id="wif_mod_<%= connection.wifi_id%>" role="dialog">
+					    <div class="modal-dialog">
+					    
+					      <!-- Modal content-->
+					      <div class="modal-content">
+					        <div class="modal-header">
+					          <button type="button" class="close" data-dismiss="modal">&times;</button>
+					          <h4 class="modal-title"><%= wif %></h4>
+					        </div>
+					        <div class="modal-body">
+					          <div class="container-fluid bd-example-row">
+					          <% if connection.wifi.present? %>
+					        	<div class="row">
+					        		<div class="col-md-4">
+					         			<strong>Owner: </strong>
+					         		</div>
+					         		<div class="col-md-8">
+					         			<%= connection.wifi.user.email %>
+					         		</div>
+					         	</div>
+					         	<hr>
+					         	<div class="row">
+					        		<div class="col-md-4">
+					         			<strong>Address: </strong>
+					         		</div>
+					         		<div class="col-md-8">
+					         			<%= connection.wifi.address %>
+					         		</div>
+					         	</div>
+					         	<hr>
+					         	<div class="row">
+					        		<div class="col-md-4">
+					         			<strong>Latitude: </strong>
+					         		</div>
+					         		<div class="col-md-8">
+					         			<%= connection.wifi.lat %>
+					         		</div>
+					         	</div>
+					         	<hr>
+					         	<div class="row">
+					        		<div class="col-md-4">
+					         			<strong>Longitude: </strong>
+					         		</div>
+					         		<div class="col-md-8">
+					         			<%= connection.wifi.long %>
+					         		</div>
+					         	</div>
+					         	<hr>
+					         	<div class="row">
+					        		<div class="col-md-4">
+					         			<strong>SSID: </strong>
+					         		</div>
+					         		<div class="col-md-8">
+					         			<%= connection.wifi.ssid %>
+					         		</div>
+					         	</div>
+					         	<hr>
+					         	<div class="row">
+					        		<div class="col-md-4">
+					         			<strong>Price Per 100MB: </strong>
+					         		</div>
+					         		<div class="col-md-8">
+					         			<%= connection.wifi.price.round(2) %>
+					         		</div>
+					         	</div>
+					         	<hr>
+					         	<div class="row">
+					        		<div class="col-md-4">
+					         			<strong>Speed: </strong>
+					         		</div>
+					         		<div class="col-md-8">
+					         			<%= (connection.wifi.avg_speed/1024).round %>MB
+					         		</div>
+					         	</div>
+					          <% else %>
+					          	<div class="row">
+					        		<h4>Wifi not present</h4>
+					         	</div>
+					          <% end %>
+					          </div>           
+					        </div>
+					        <div class="modal-footer">
+					          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					        </div>
+					      </div>
+					      
+					    </div>
+					  </div>
+
+					<!-- User Modal -->
+					  <div class="modal fade" id="user_mod_<%= connection.user_id%>" role="dialog">
+					    <div class="modal-dialog">
+					    
+					      <!-- Modal content-->
+					      <div class="modal-content">
+					        <div class="modal-header">
+					          <button type="button" class="close" data-dismiss="modal">&times;</button>
+					          <h4 class="modal-title"><%= use %></h4>
+					        </div>
+					        <div class="modal-body">
+					         	<div class="container-fluid bd-example-row">
+					         	<% if connection.user.present? %>
+						        	<div class="row">
+						        		<div class="col-md-4">
+						         			<strong>First Name: </strong>
+						         		</div>
+						         		<div class="col-md-8">
+						         			<%= connection.user.first_name.capitalize %>
+						         		</div>
+						         	</div>
+						         	<hr>
+						         	<div class="row">
+						        		<div class="col-md-4">
+						         			<strong>Last Name: </strong>
+						         		</div>
+						         		<div class="col-md-8">
+						         			<%= connection.user.last_name.capitalize %>
+						         		</div>
+						         	</div>
+						         	<hr>
+						         	<div class="row">
+						        		<div class="col-md-4">
+						         			<strong>Email: </strong>
+						         		</div>
+						         		<div class="col-md-8">
+						         			<%= connection.user.email %>
+						         		</div>
+						         	</div>
+						         	<hr>
+						         	<div class="row">
+						        		<div class="col-md-4">
+						         			<strong>Mobile Number: </strong>
+						         		</div>
+						         		<div class="col-md-8">
+						         			<%= connection.user.mobile_number %>
+						         		</div>
+						         	</div>
+						         	<hr>
+						         	<div class="row">
+						        		<div class="col-md-4">
+						         			<strong>Email Verified: </strong>
+						         		</div>
+						         		<div class="col-md-8">
+						         			<%= connection.user.email_verified ? 'Yes' : 'No' %>
+						         		</div>
+						         	</div>
+						         	<hr>
+						         	<div class="row">
+						        		<div class="col-md-4">
+						         			<strong>Number Verified: </strong>
+						         		</div>
+						         		<div class="col-md-8">
+						         			<%= connection.user.number_verified ? 'Yes' : 'No' %>
+						         		</div>
+						         	</div>
+						         	<hr>
+						         	<div class="row">
+						        		<div class="col-md-4">
+						         			<strong>Successfully Terminated: </strong>
+						         		</div>
+						         		<div class="col-md-8">
+						         			<%= connection.user.terminated_successfully ? 'Yes' : 'No' %>
+						         		</div>
+						         	</div>
+						         <% else %>
+						         	<div class="row">
+						        		<h4>User not present</h4>
+						         	</div>
+						         <% end %>
+					          </div>        
+					        </div>
+					        <div class="modal-footer">
+					          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					        </div>
+					      </div>
+					      
+					    </div>
+					  </div>
+
+
 					<% end %>
 				</tbody> 
 			</table> 
