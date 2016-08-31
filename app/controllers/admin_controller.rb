@@ -30,5 +30,17 @@ class AdminController < ApplicationController
 
 	def connections
 		@connection = Connection.all.order(updated_at: 'DESC')
+		@total_earning = 0
+		@download_data = 0
+		@upload_data = 0
+		Connection.all.each do |conn|
+			@total_earning = @total_earning + conn.total_bill
+			@download_data = @download_data + conn.download_data
+			@upload_data = @upload_data + conn.upload_data
+		end
+	end
+
+	def payments
+		@wifi = Wifi.all
 	end
 end

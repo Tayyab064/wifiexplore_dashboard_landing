@@ -21,6 +21,7 @@ Rails.application.routes.draw do
     get 'wifi_map' => 'admin#wifi_map'
     get 'users' => 'admin#users'
     get 'connections' => 'admin#connections'
+    get 'earnings' => 'admin#payments'
   end
   # Example resource route with options:
   #   resources :products do

@@ -2,7 +2,7 @@
 
   $(function(){
 
-    $('#world_map').vectorMap({
+    /*$('#world_map').vectorMap({
       map: 'world_mill_en',
       normalizeFunction: 'polynomial',
       backgroundColor: '#fff',            
@@ -48,7 +48,7 @@
         {latLng: [26.02, 50.55], name: 'Bahrain'},
         {latLng: [0.33, 6.73], name: 'São Tomé and Príncipe'}
       ]
-    });
+    });*/
     var map,
     markers = [
       {latLng: [40.71, -74.00], name: 'New York'},

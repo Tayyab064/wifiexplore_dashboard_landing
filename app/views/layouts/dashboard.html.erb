@@ -223,6 +223,16 @@
 											<span class="font-bold">Dashboard</span> 
 										</a>
 									</li>
+									<li id='paymet_007' class="">
+										<a href="<%= earnings_path %>" class="auto"> 
+											<span class="pull-right text-muted"> 
+												<i class="i i-circle-sm-o text"></i> 
+												<i class="i i-circle-sm text-active"></i> 
+											</span> 
+											<i class="fa fa-dollar icon"> </i> 
+											<span class="font-bold">Earning</span> 
+										</a>
+									</li>
 									<li id='wifi_007' class=""> 
 										<a href="#" class="auto"> 
 											<i class="i i-signal icon"> </i> 
@@ -404,6 +414,16 @@
 											</li> 
 										</ul>  -->
 									</li> 
+									<li id='signout_007' class="">
+										<a onclick="signout_ajax();">
+											<span class="pull-right text-muted"> 
+												<i class="i i-circle-sm-o text"></i> 
+												<i class="i i-circle-sm text-active"></i> 
+											</span> 
+											<i class="i i-logout icon"> </i> 
+											<span class="font-bold">Sign Out</span> 
+										</a>
+									</li>
 								 <!-- <li > 
 								 	<a href="index.html#" class="auto"> 
 								 		<span class="pull-right text-muted"> 
@@ -593,7 +613,7 @@
 			<!-- /.aside --> 
 
 
-			<section id="content" style="overflow: scroll;"> 
+			<section id="content"> 
 				<section class="hbox stretch"> 
 					<%= yield %>
 				</section> 
@@ -618,9 +638,20 @@
 	<script src="js/datatables/jquery.dataTables.min.js"></script>
 	<script src="js/datatables/demo.js"></script>
 
-	<script src="js/calendar/bootstrap_calendar.js"></script> 
+	<!-- <script src="js/calendar/bootstrap_calendar.js"></script> 
 	<script src="js/calendar/demo.js"></script> 
 	<script src="js/sortable/jquery.sortable.js"></script> 
-	<script src="js/app.plugin.js"></script>
+	<script src="js/app.plugin.js"></script> -->
+
+	<script type="text/javascript">
+		function signout_ajax(){
+			var urls = '<%= request.base_url+destroy_admin_session_path %>' ;
+			$.ajax({url: urls , method: 'delete' , success: function(result){
+		        console.log('success');
+		        console.log(result);
+		    }});
+		};
+	</script>
+
 	</body>
 	</html>
