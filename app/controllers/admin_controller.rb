@@ -42,5 +42,24 @@ class AdminController < ApplicationController
 
 	def payments
 		@wifi = Wifi.all
+		@lender_earning = ''
+		@our_earning = ''
+		@total_earning = 0
+		Connection.all.each do |conn|
+			@total_earning = @total_earning + conn.total_bill
+		end
+		Connection.all.order(updated_at: 'DESC').limit(50).each do |coni|
+			if(@lender_earning == '' || @our_earning == '')
+				@lender_earning = ((coni.total_bill*0.90)/1000).round(2).to_s
+				@our_earning = ((coni.total_bill*0.10)/1000).round(2).to_s
+			else
+				@lender_earning = @lender_earning + ","+ ((coni.total_bill*0.90)/1000).round(2).to_s
+				@our_earning = @our_earning + ","+ ((coni.total_bill*0.10)/1000).round(2).to_s
+			end
+		end
+	end
+
+	def redir_dash
+		redirect_to dashboard_path
 	end
 end

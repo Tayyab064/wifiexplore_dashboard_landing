@@ -47,7 +47,7 @@
 	};
 	easypie();
   
-	// datepicker
+	/*// datepicker
 	$(".datepicker-input").each(function(){ $(this).datepicker();});
 
 	// dropfile
@@ -71,7 +71,7 @@
 		  reader.readAsDataURL(file);
 		  return false;
 		};
-	});
+	});*/
 
 	// slider
 	$('.slider').each(function(){
@@ -89,7 +89,7 @@
 	  $('.sortable').sortable();
 	}
 
-	// slim-scroll
+	/*// slim-scroll
 	$('.no-touch .slim-scroll').each(function(){
 		var $self = $(this), $data = $self.data(), $slimResize;
 		$self.slimScroll($data);
@@ -100,7 +100,7 @@
     $(document).on('updateNav', function(){
       $self.slimScroll($data);
     });
-	});	
+	});	*/
 
 	// portlet
 	$('.portlet').each(function(){

@@ -3,7 +3,7 @@
   $(function(){
  	
 	// sparkline
-	var sr, sparkline = function($re){
+	/*var sr, sparkline = function($re){
 		$(".sparkline").each(function(){
 			var $data = $(this).data();
 			if($re && !$data.resize) return;
@@ -17,7 +17,7 @@
 		clearTimeout(sr);
 		sr = setTimeout(function(){sparkline(true)}, 500);
 	});
-	sparkline(false);
+	sparkline(false);*/
 
 	// easypie
 	var easypie = function(){
@@ -47,7 +47,7 @@
 	};
 	easypie();
   
-	// datepicker
+	/*// datepicker
 	$(".datepicker-input").each(function(){ $(this).datepicker();});
 
 	// dropfile
@@ -71,9 +71,9 @@
 		  reader.readAsDataURL(file);
 		  return false;
 		};
-	});
+	});*/
 
-	// slider
+	/*// slider
 	$('.slider').each(function(){
 		$(this).slider();
 	});
@@ -82,14 +82,14 @@
 	$("input[data-ride='spinner']").each(function(){
 		var $options = $(this).data();
 		$(this).TouchSpin($options);
-	});
+	});*/
 
 	// sortable
 	if ($.fn.sortable) {
 	  $('.sortable').sortable();
 	}
 
-	// slim-scroll
+	/*// slim-scroll
 	$('.no-touch .slim-scroll').each(function(){
 		var $self = $(this), $data = $self.data(), $slimResize;
 		$self.slimScroll($data);
@@ -100,7 +100,7 @@
     $(document).on('updateNav', function(){
       $self.slimScroll($data);
     });
-	});	
+	});*/	
 
 	// portlet
 	$('.portlet').each(function(){
