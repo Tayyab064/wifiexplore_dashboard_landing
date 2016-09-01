@@ -424,6 +424,7 @@
 											<span class="font-bold">Sign Out</span> 
 										</a>
 									</li>
+											
 								 <!-- <li > 
 								 	<a href="index.html#" class="auto"> 
 								 		<span class="pull-right text-muted"> 
@@ -646,11 +647,27 @@
 	<script type="text/javascript">
 		function signout_ajax(){
 			var urls = '<%= request.base_url+destroy_admin_session_path %>' ;
-			$.ajax({url: urls , method: 'delete' , success: function(result){
+			$.ajax({url: urls , method: 'delete', data:{ authenticity_token: "<%= form_authenticity_token %>"  } , success: function(result){
 		        console.log('success');
-		        console.log(result);
+		        location.reload();
 		    }});
 		};
+
+
+
+		<% if request.url.include? "admin/dashboard" %>
+			$("#dashi_007").addClass("active");
+		<% elsif request.url.include? "admin/earnings" %>
+			$("#paymet_007").addClass("active");
+		<% elsif request.url.include? "admin/wifi_detail" %>
+			$("#wifi_007").addClass("active");
+		<% elsif request.url.include? "admin/wifi_map" %>
+			$("#wifi_007").addClass("active");
+		<% elsif request.url.include? "admin/connections" %>
+			$("#conn_007").addClass("active");
+		<% elsif request.url.include? "admin/users" %>
+			$("#user_007").addClass("active");
+		<% end %>
 	</script>
 
 	</body>
