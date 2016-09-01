@@ -1,4 +1,10 @@
 <link rel="stylesheet" href="js/jvectormap/jquery-jvectormap-1.2.2.css" type="text/css" />
+<style type="text/css">
+	.alert{
+		margin-bottom: 0px;
+		font-size: 13px;
+	}
+</style>
 <section > 
 				<section class="vbox"> 
 					<section class="scrollable padder"> 
@@ -32,6 +38,10 @@
 								<a href="index.html#nav, #sidebar" class="btn btn-icon b-2x btn-info btn-rounded" data-toggle="class:nav-xs, show">
 									<i class="fa fa-bars"></i>
 								</a>  -->
+								<div class = "col-sm-6 col-sm-offset-6 alert alert-info" style="text-align: center;">
+									<strong><i class="i i-users2"></i> Connected Users: </strong>
+									<%= @connected_user > 1000 ? (@connected_user/1000).round.to_s+' K' : @connected_user %>
+								</div>
 							</div> 
 						</section> 
 						<div class="row"> 
@@ -39,7 +49,7 @@
 								<div class="panel b-a"> 
 									<div class="row m-n"> 
 										<div class="col-md-6 b-b b-r"> 
-											<a class="block padder-v hover"> 
+											<a class="block padder-v hover" href="<%= users_path %>"> 
 												<span class="i-s i-s-2x pull-left m-r-sm"> 
 													<i class="i i-hexagon2 i-s-base text-danger hover-rotate"></i> 
 													<i class="i i-users2 i-1x text-white"></i> 
@@ -51,7 +61,7 @@
 											</a> 
 										</div> 
 										<div class="col-md-6 b-b"> 
-											<a class="block padder-v hover"> 
+											<a class="block padder-v hover" href="<%= wifi_detail_path %>"> 
 												<span class="i-s i-s-2x pull-left m-r-sm"> 
 													<i class="i i-hexagon2 i-s-base text-success-lt hover-rotate"></i> 
 													<i class="i i-signal i-sm text-white"></i> 
@@ -63,7 +73,7 @@
 											</a> 
 										</div> 
 										<div class="col-md-6 b-b b-r"> 
-											<a class="block padder-v hover"> 
+											<a class="block padder-v hover" href="<%= connections_path %>"> 
 												<span class="i-s i-s-2x pull-left m-r-sm"> 
 													<i class="i i-hexagon2 i-s-base text-info hover-rotate"></i> 
 													<i class="i i-feed i-sm text-white"></i> 
@@ -77,7 +87,7 @@
 											</a> 
 										</div> 
 										<div class="col-md-6 b-b"> 
-											<a class="block padder-v hover"> 
+											<a class="block padder-v hover" href="<%= earnings_path %>"> 
 												<span class="i-s i-s-2x pull-left m-r-sm"> 
 													<i class="i i-hexagon2 i-s-base text-primary hover-rotate"></i> 
 													<i class="fa fa-dollar i-sm text-white"></i> 

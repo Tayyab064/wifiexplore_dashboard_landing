@@ -9,6 +9,7 @@ class AdminController < ApplicationController
 		@total_earning = 0
 		@download_data = 0
 		@upload_data = 0
+		@connected_user = Connection.where(disconnected_at: nil).count
 		Connection.all.each do |conn|
 			@total_earning = @total_earning + conn.total_bill
 			@download_data = @download_data + conn.download_data
@@ -42,19 +43,29 @@ class AdminController < ApplicationController
 
 	def payments
 		@wifi = Wifi.all
-		@lender_earning = ''
-		@our_earning = ''
+		@wifi_earning = ''
+		@wifi_conn = ''
 		@total_earning = 0
+		@avg_con = ( Connection.all.count / Wifi.all.count ).round
 		Connection.all.each do |conn|
 			@total_earning = @total_earning + conn.total_bill
 		end
-		Connection.all.order(updated_at: 'DESC').limit(50).each do |coni|
-			if(@lender_earning == '' || @our_earning == '')
-				@lender_earning = ((coni.total_bill*0.90)/1000).round(2).to_s
-				@our_earning = ((coni.total_bill*0.10)/1000).round(2).to_s
+		Wifi.all.order(updated_at: 'DESC').limit(50).each do |wif|
+			
+			temp_wifi_earning = ''
+			wif.connections.each do |coni|
+				if(temp_wifi_earning == '')
+					temp_wifi_earning = ((coni.total_bill)/1000).round(2).to_s
+				else
+					temp_wifi_earning = temp_wifi_earning + ","+ ((coni.total_bill)/1000).round(2).to_s
+				end
+			end
+			if(@wifi_earning == '' || @wifi_conn)
+				@wifi_earning = temp_wifi_earning
+				@wifi_conn = wif.connections.count.to_s
 			else
-				@lender_earning = @lender_earning + ","+ ((coni.total_bill*0.90)/1000).round(2).to_s
-				@our_earning = @our_earning + ","+ ((coni.total_bill*0.10)/1000).round(2).to_s
+				@wifi_earning = @wifi_earning + ","+ temp_wifi_earning
+				@wifi_conn = @wifi_conn + "," + wif.connections.count.to_s
 			end
 		end
 	end
