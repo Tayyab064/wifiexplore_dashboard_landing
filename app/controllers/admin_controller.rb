@@ -85,4 +85,16 @@ class AdminController < ApplicationController
 		user.update(blocked: false)
 		redirect_to :back
 	end
+
+	def block_wifi
+		wifi = Wifi.find(params[:id])
+		wifi.update(blocked: true)
+		redirect_to :back
+	end
+
+	def unblock_wifi
+		wifi = Wifi.find(params[:id])
+		wifi.update(blocked: false)
+		redirect_to :back
+	end
 end

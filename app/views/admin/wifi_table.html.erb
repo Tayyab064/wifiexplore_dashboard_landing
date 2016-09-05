@@ -123,10 +123,11 @@
 					<tr> 
 						<th width="15%">Name</th> 
 						<th width="20%">Address</th> 
-						<th width="15%">Latitude</th> 
-						<th width="15%">Longitude</th> 
+						<th width="10%">Latitude</th> 
+						<th width="10%">Longitude</th> 
 						<th width="20%">Price per 100MB</th>
 						<th width="15%">Speed</th>
+						<th width="10%">Block</th> 
 					</tr> 
 				</thead> 
 				<tbody> 
@@ -138,6 +139,8 @@
 						<td><%= wifi.long %></td>
 						<td><%= wifi.price %></td>
 						<td><%= (wifi.avg_speed/1024).round(2) %> MB</td>
+						<td><%= wifi.blocked ? link_to('Yes' , unblock_wifi_path(wifi.id)) : link_to('No' , block_wifi_path(wifi.id)) %>
+						</td>
 					</tr>
 					<% end %>
 				</tbody> 

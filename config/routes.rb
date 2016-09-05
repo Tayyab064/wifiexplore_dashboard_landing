@@ -26,6 +26,9 @@ Rails.application.routes.draw do
 
     get 'block_user/:id' => 'admin#block_user' , as: 'block_user'
     get 'unblock_user/:id' => 'admin#unblock_user' , as: 'unblock_user'
+
+    get 'block_wifi/:id' => 'admin#block_wifi' , as: 'block_wifi'
+    get 'unblock_wifi/:id' => 'admin#unblock_wifi' , as: 'unblock_wifi'
   end
   # Example resource route with options:
   #   resources :products do
