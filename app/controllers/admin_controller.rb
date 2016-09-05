@@ -76,6 +76,7 @@ class AdminController < ApplicationController
 
 	def block_user
 		user = User.find(params[:id])
+		api = user.api_key.update(token: nil)
 		user.update(blocked: true)
 		redirect_to :back
 	end
