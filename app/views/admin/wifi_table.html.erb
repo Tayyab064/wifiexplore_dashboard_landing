@@ -139,7 +139,7 @@
 						<td><%= wifi.long %></td>
 						<td><%= wifi.price %></td>
 						<td><%= (wifi.avg_speed/1024).round(2) %> MB</td>
-						<td><%= wifi.blocked ? link_to('Yes' , unblock_wifi_path(wifi.id)) : link_to('No' , block_wifi_path(wifi.id)) %>
+						<td><%= wifi.blocked ? link_to('Blocked' , unblock_wifi_path(wifi.id) , class: 'btn btn-danger') : link_to('Block' , block_wifi_path(wifi.id) , class: 'btn btn-success') %>
 						</td>
 					</tr>
 					<% end %>

@@ -98,4 +98,13 @@ class AdminController < ApplicationController
 		wifi.update(blocked: false)
 		redirect_to :back
 	end
+
+	def reset_pass
+		p params
+		if params[:password] == params[:c_password]
+			user = User.find(params[:id])
+			user.update(password: params[:password])
+		end
+		redirect_to :back
+	end
 end
