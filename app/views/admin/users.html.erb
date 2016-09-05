@@ -12,11 +12,12 @@
 			<table id='users' class="table table-striped m-b-none" data-ride="datatables"> 
 				<thead> 
 					<tr> 
-						<th width="19%">First Name</th> 
-						<th width="19%">Last Name</th> 
-						<th width="25%">Email</th> 
+						<th width="14%">First Name</th> 
+						<th width="14%">Last Name</th> 
+						<th width="20%">Email</th> 
 						<th width="15%">Mobile Number</th> 
 						<th width="22%">Successfully Terminated</th>
+						<th width="15%">Block Access</th>
 					</tr> 
 				</thead> 
 				<tbody> 
@@ -27,6 +28,8 @@
 						<td><%= user.email %></td>
 						<td><%= user.mobile_number %></td>
 						<td><%= user.terminated_successfully ? 'Yes' : 'No' %></td>
+						<td><%= user.blocked ? link_to('Yes' , unblock_user_path(user.id)) : link_to('No' , block_user_path(user.id)) %>
+						</td>
 					</tr>
 					<% end %>
 				</tbody> 

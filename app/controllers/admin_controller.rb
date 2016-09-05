@@ -73,4 +73,16 @@ class AdminController < ApplicationController
 	def redir_dash
 		redirect_to dashboard_path
 	end
+
+	def block_user
+		user = User.find(params[:id])
+		user.update(blocked: true)
+		redirect_to :back
+	end
+
+	def unblock_user
+		user = User.find(params[:id])
+		user.update(blocked: false)
+		redirect_to :back
+	end
 end
