@@ -107,4 +107,11 @@ class AdminController < ApplicationController
 		end
 		redirect_to :back
 	end
+
+	def block
+		@user = User.all
+		@user_block = User.where(blocked: true)
+		@wifi = Wifi.all
+		@wifi_block = Wifi.where(blocked: true)
+	end
 end
