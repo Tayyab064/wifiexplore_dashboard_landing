@@ -16,7 +16,7 @@
 				<header class="panel-heading"> Blocked Wifi's </header> 
 				<div class="panel-body text-center"> 
 					<h4><%= @wifi_block.count  %><small> </small></h4> 
-					<% wi = ((@wifi_block.count/@wifi.count)*100) %>
+					<% wi = ((@wifi_block.count.to_f / @wifi.count.to_f ) * 100) %>
 					<small class="text-muted block">No of blocked wifi's</small> 
 					<div class="inline"> <!-- data-track-color="#f6fc33"  -->
 						<div class="easypiechart" data-percent="<%= wi %>"  data-bar-color="#fcc633" data-line-width="16" data-loop="false" data-size="188"> 
@@ -37,7 +37,7 @@
 				<header class="panel-heading "> Blocked User's </header> 
 				<div class="panel-body text-center"> 
 					<h4><%=  @user_block.count %><small></small></h4> 
-					<% us = ((@user_block.count/@user.count)*100) %>
+					<% us = ((@user_block.count.to_f / @user.count.to_f) * 100) %>
 					<small class="text-muted block">No of blocked user's</small> 
 					<div class="inline"> 
 						<div class="easypiechart" data-percent="<%= us %>" data-line-width="10" data-track-color="#cef9ff" data-bar-color="#1ccc88" data-scale-color="#fff" data-size="188" data-line-cap='butt'> 
