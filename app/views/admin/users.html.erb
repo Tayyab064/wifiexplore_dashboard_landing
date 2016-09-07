@@ -31,7 +31,7 @@
 						<td><%= user.email %></td>
 						<td><%= user.mobile_number %></td>
 						<td><%= time_ago_in_words(user.api_key.updated_at)+" ago" %></td>
-						<td><%= user.connections.order(connected_at: 'DESC').count > 0 ? time_ago_in_words(user.connections.order(connected_at: 'DESC').first.connected_at)+' ago' : '' %></td>
+						<td><%= user.connections.count > 0 ? time_ago_in_words(user.connections.order(connected_at: 'DESC').first.connected_at)+' ago' : '' %></td>
 						<td><%= user.terminated_successfully ? 'Yes' : 'No' %></td>
 						<td><%= user.blocked ? link_to('Blocked' , unblock_user_path(user.id) , class: 'btn btn-danger') : link_to('Block' , block_user_path(user.id) , class: 'btn btn-success') %>
 						</td>
