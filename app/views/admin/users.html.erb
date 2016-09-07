@@ -12,13 +12,15 @@
 			<table id='users' class="table table-striped m-b-none" data-ride="datatables"> 
 				<thead> 
 					<tr> 
-						<th width="14%">First Name</th> 
-						<th width="14%">Last Name</th> 
-						<th width="15%">Email</th> 
-						<th width="15%">Mobile Number</th> 
-						<th width="22%">Successfully Terminated</th>
-						<th width="15%">Block Access</th>
-						<th width="5%">Reset Password</th>
+						<th>First Name</th> 
+						<th>Last Name</th> 
+						<th>Email</th> 
+						<th>Mobile Number</th> 
+						<th>Last Signin</th>
+						<th>Last Connection</th>
+						<th>Successfully Terminated</th>
+						<th>Block Access</th>
+						<th>Reset Password</th>
 					</tr> 
 				</thead> 
 				<tbody> 
@@ -28,6 +30,8 @@
 						<td><%= user.last_name.present? ? user.last_name.capitalize : '' %></td>
 						<td><%= user.email %></td>
 						<td><%= user.mobile_number %></td>
+						<td><%= time_ago_in_words(user.api_key.updated_at)+" ago" %></td>
+						<td><%= user.connections.order(connected_at: 'DESC').count > 0 ? time_ago_in_words(user.connections.order(connected_at: 'DESC').first.connected_at)+' ago' : '' %></td>
 						<td><%= user.terminated_successfully ? 'Yes' : 'No' %></td>
 						<td><%= user.blocked ? link_to('Blocked' , unblock_user_path(user.id) , class: 'btn btn-danger') : link_to('Block' , block_user_path(user.id) , class: 'btn btn-success') %>
 						</td>
