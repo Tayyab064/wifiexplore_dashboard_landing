@@ -413,7 +413,17 @@
 												</a> 
 											</li> 
 										</ul>  -->
-									</li> 
+									</li>  
+									<li id='stats_007' class="">
+										<a href="<%= statistics_path %>">
+											<span class="pull-right text-muted"> 
+												<i class="i i-circle-sm-o text"></i> 
+												<i class="i i-circle-sm text-active"></i> 
+											</span> 
+											<i class="i i-statistics icon"> </i> 
+											<span class="font-bold">Statistics</span> 
+										</a>
+									</li>
 									<li id='block_007' class="">
 										<a href="<%= block_path %>">
 											<span class="pull-right text-muted"> 
@@ -677,6 +687,8 @@
 			$("#conn_007").addClass("active");
 		<% elsif request.url.include? "admin/users" %>
 			$("#user_007").addClass("active");
+		<% elsif request.url.include? "admin/statistics" %>
+			$("#stats_007").addClass("active");
 		<% end %>
 	</script>
 

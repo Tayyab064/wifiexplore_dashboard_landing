@@ -114,4 +114,22 @@ class AdminController < ApplicationController
 		@wifi = Wifi.all
 		@wifi_block = Wifi.where(blocked: true)
 	end
+
+	def stats
+		@connections = Connection.where.not(disconnected_at: nil).order(updated_at: 'DESC').limit(30)
+		@wifis = []
+		id_chk = []
+		Connection.all.order(updated_at: 'DESC').each do |conn|
+			unless id_chk.include? conn.wifi_id
+				if id_chk.count < 30
+					@wifis.push(conn.wifi)
+					id_chk.push(conn.wifi_id)
+				else
+					break
+				end
+			end
+		end
+		p "Wifis"
+		p @wifis
+	end
 end

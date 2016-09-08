@@ -110,7 +110,7 @@ $(function(){
       }
   );
   */
-  var d2 = [];
+  /*var d2 = [];
   for (var i = 0; i <= 6; i += 1) {
     d2.push([i, parseInt((Math.floor(Math.random() * (1 + 30 - 10))) + 10)]);
   }
@@ -169,7 +169,7 @@ $(function(){
           }
         }
       }
-  );
+  );*/
 
 
   // live update
@@ -366,7 +366,7 @@ $(function(){
     }
   ];
 
-  $("#flot-bar").length && $.plot($("#flot-bar"), data1, {
+  /*$("#flot-bar").length && $.plot($("#flot-bar"), data1, {
       xaxis: {
           
       },
@@ -386,7 +386,7 @@ $(function(){
           shadowSize: 1
       },
       tooltip: true,
-  });
+  });*/
 
   $("#flot-bar-h").length && $.plot($("#flot-bar-h"), data2, {
       xaxis: {
