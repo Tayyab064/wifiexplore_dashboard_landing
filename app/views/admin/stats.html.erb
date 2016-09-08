@@ -45,9 +45,9 @@
 		var ins = 0 ;
 		<% @connections.each do |conn| %>
 			d1_1.push([ins , <%= conn.wifi.present? ? conn.wifi.connections.count : 0 %>]);
-			d1_2.push([ins , <%= ( conn.download_data + conn.upload_data ).round %>]);
-			d1_3.push([ins , <%= conn.total_bill.round %>]);
-			ins = ins + 5 ;
+			d1_2.push([ins+1 , <%= ( conn.download_data + conn.upload_data ).round %>]);
+			d1_3.push([ins+2 , <%= conn.total_bill.round %>]);
+			ins = ins + 10 ;
 		<% end %>
 
 		var data1 = [
