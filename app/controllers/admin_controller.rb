@@ -116,7 +116,7 @@ class AdminController < ApplicationController
 	end
 
 	def stats
-		@connections = Connection.where.not(disconnected_at: nil).order(updated_at: 'DESC').limit(20)
+		@connections = Connection.where.not(disconnected_at: nil).order(updated_at: 'DESC').limit(10)
 		@wifis = []
 		id_chk = []
 		Connection.all.order(updated_at: 'DESC').each do |conn|
