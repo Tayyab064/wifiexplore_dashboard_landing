@@ -120,9 +120,13 @@ class AdminController < ApplicationController
 		@wifis = []
 		id_chk = []
 		Connection.all.order(updated_at: 'DESC').each do |conn|
-			unless id_chk.include? conn.wifi_id
+			if id_chk.include? conn.wifi_id
+
+			else
 				if id_chk.count < 30
-					@wifis.push(conn.wifi)
+					if conn.wifi.present?
+						@wifis.push(conn.wifi)
+					end
 					id_chk.push(conn.wifi_id)
 				else
 					break
