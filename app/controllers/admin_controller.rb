@@ -136,4 +136,21 @@ class AdminController < ApplicationController
 		p "Wifis"
 		p @wifis
 	end
+
+	def stripe_account_list
+		require "stripe"
+		Stripe.api_key = "sk_test_9VYi8WoB1EmZIrmrdNLgXR6U"
+
+		@str =  Stripe::Charge.list(:limit => 100)
+	end
+
+	def stripe_account_refund
+		require "stripe"
+		Stripe.api_key = "sk_test_9VYi8WoB1EmZIrmrdNLgXR6U"
+
+		re = Stripe::Refund.create(
+		  charge: params[:ch_tok]
+		)
+		redirect_to :back
+	end
 end
