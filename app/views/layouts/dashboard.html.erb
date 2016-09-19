@@ -444,6 +444,16 @@
 											<span class="font-bold">Block</span> 
 										</a>
 									</li>
+									<li id='defaulter_007' class="">
+										<a href="<%= defaulter_path %>">
+											<span class="pull-right text-muted"> 
+												<i class="i i-circle-sm-o text"></i> 
+												<i class="i i-circle-sm text-active"></i> 
+											</span> 
+											<i class="fa fa-lock icon"> </i> 
+											<span class="font-bold">Defaulter</span> 
+										</a>
+									</li>
 									<li id='signout_007' class="">
 										<a onclick="signout_ajax();">
 											<span class="pull-right text-muted"> 
@@ -701,6 +711,8 @@
 			$("#stats_007").addClass("active");
 		<% elsif request.url.include? "admin/stripe" %>
 			$("#stripe_007").addClass("active");
+		<% elsif request.url.include? "admin/defaulter" %>
+			$("#defaulter_007").addClass("active");
 		<% end %>
 	</script>
 

@@ -153,4 +153,14 @@ class AdminController < ApplicationController
 		)
 		redirect_to :back
 	end
+
+	def term_success_false
+		@user = User.where(terminated_successfully: false)
+	end
+
+	def term_success_mark_true
+		user = User.find(params[:id])
+		user.update(terminated_successfully: true)
+		redirect_to :back
+	end
 end
