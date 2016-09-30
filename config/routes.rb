@@ -26,6 +26,8 @@ Rails.application.routes.draw do
     get 'block' => 'admin#block'
     get 'statistics' => 'admin#stats'
     get 'stripe' => 'admin#stripe_account_list'
+    get 'withdraw_pending' => 'admin#withdraw_pending'
+    get 'withdraw_transferred' => 'admin#withdraw_transferred'
     get 'defaulter' => 'admin#term_success_false'
     get 'stripe/refund/:ch_tok' => 'admin#stripe_account_refund' , as: 'refund_stripe'
 
@@ -38,6 +40,7 @@ Rails.application.routes.draw do
     get 'unblock_wifi/:id' => 'admin#unblock_wifi' , as: 'unblock_wifi'
 
     post 'rest_pass/:id' => 'admin#reset_pass' , as: 'reset_password_admin'
+    get 'withdraw/pending/:id' => 'admin#mark_withdraw_pending' , as: 'mark_withdraw_pending'
   end
   # Example resource route with options:
   #   resources :products do

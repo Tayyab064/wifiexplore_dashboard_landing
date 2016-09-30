@@ -434,6 +434,27 @@
 											<span class="font-bold">Stripe</span> 
 										</a>
 									</li>
+									<li id='withdraw_007' class=""> 
+										<a href="#" class="auto"> 
+											<i class="fa fa-money icon"> </i> 
+											<b class="badge bg-danger pull-right">2</b> 
+											<span class="font-bold">Withdraw</span> 
+										</a> 
+										<ul class="nav dk"> 
+											<li > 
+												<a href="<%= withdraw_pending_path %>" class="auto"> 
+													<i class="i i-question2"></i> 
+													<span>Pending</span> 
+												</a> 
+											</li>
+											<li > 
+												<a href="<%= withdraw_transferred_path %>" class="auto"> 
+													<i class="i i-checkmark2"></i> 
+													<span>Transferred</span> 
+												</a> 
+											</li>
+										</ul>
+									</li>
 									<li id='block_007' class="">
 										<a href="<%= block_path %>">
 											<span class="pull-right text-muted"> 
@@ -713,6 +734,10 @@
 			$("#stripe_007").addClass("active");
 		<% elsif request.url.include? "admin/defaulter" %>
 			$("#defaulter_007").addClass("active");
+		<% elsif request.url.include? "admin/withdraw_pending" %>
+			$("#withdraw_007").addClass("active");
+		<% elsif request.url.include? "admin/withdraw_transferred" %>
+			$("#withdraw_007").addClass("active");
 		<% end %>
 	</script>
 

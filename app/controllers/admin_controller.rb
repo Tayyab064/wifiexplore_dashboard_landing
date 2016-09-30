@@ -163,4 +163,18 @@ class AdminController < ApplicationController
 		user.update(terminated_successfully: true)
 		redirect_to :back
 	end
+
+	def withdraw_pending
+		@withdraw = Withdraw.where(transfered: false)
+	end
+
+	def withdraw_transferred
+		@withdraw = Withdraw.where(transfered: true)
+	end
+
+	def mark_withdraw_pending
+		c = Withdraw.find(params[:id])
+		c.update(transfered: true)
+		redirect_to :back
+	end
 end
