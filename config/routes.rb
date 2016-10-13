@@ -41,6 +41,8 @@ Rails.application.routes.draw do
 
     post 'rest_pass/:id' => 'admin#reset_pass' , as: 'reset_password_admin'
     get 'withdraw/pending/:id' => 'admin#mark_withdraw_pending' , as: 'mark_withdraw_pending'
+
+    get 'destroy/:id' => 'admin#delete_user' , as: 'user_destroy'
   end
   # Example resource route with options:
   #   resources :products do

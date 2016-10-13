@@ -177,4 +177,10 @@ class AdminController < ApplicationController
 		c.update(transfered: true)
 		redirect_to :back
 	end
+
+	def delete_user
+		user = User.find(params[:id])
+		user.destroy
+		redirect_to :back
+	end
 end
