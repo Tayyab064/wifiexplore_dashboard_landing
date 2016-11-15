@@ -1,0 +1,50 @@
+body {
+    background-image: url(img/home.jpg);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    background-color: #999;
+    font-family: Varela Round; 
+    font-weight: 500;
+}
+
+
+.container {
+	margin: auto;
+    max-width: 800px;
+    padding: 0 20px;
+}
+
+
+
+.heading {
+	text-align: center;
+	color: #ffffff;
+	font-size: 45px;
+	margin: 0 0 10% 0;
+}
+
+
+.descript {
+	font-size: 28px;
+    color: #ffffff;
+}
+
+.padd {
+	padding: 20% 0;
+}
+
+.play_img {
+	width: 100%;
+	float: left;
+}
+
+.play_img img {
+    max-width: 100%;
+    float: left;	
+}
+
+.btn {
+	padding: 2% 6px;
+}

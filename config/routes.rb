@@ -1,11 +1,12 @@
 Rails.application.routes.draw do
   devise_for :admins
-  root "admin#redir_dash"
+  root "landing#landing"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
+  get 'r/:id' => 'landing#show_wifi'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

@@ -1,0 +1,33 @@
+
+
+@media (max-width: 767px) and (min-width: 480px) {
+	
+	.descript {
+		/*font-size: 24px;*/
+		line-height: 2;
+	}
+
+}
+
+@media (max-width: 480px) and (min-width: 320px) {
+
+	.heading {
+		font-size: 40px;
+	}
+
+	.descript {
+		font-size: 24px;
+		line-height: 2;
+	}
+
+	.padd {
+	    padding: 25% 0;
+    }
+
+    .btn {
+    	width: 100%;
+    	float: left;
+    	padding: 7%;
+    }
+
+}	
